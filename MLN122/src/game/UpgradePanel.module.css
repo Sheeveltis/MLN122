@@ -1,0 +1,83 @@
+.panelContainer {
+  width: 100%;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.panelTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #f4f4f4;
+  letter-spacing: 1px;
+}
+
+.upgradeList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.upgradeCard {
+  width: 98%;
+  max-width: 250px;
+  background: #232946;
+  border: 1px solid #ccd6f6;
+  border-radius: 8px;
+  padding: 10px 10px 8px 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.upgradeTitle {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #ffe58f;
+  margin-bottom: 3px;
+}
+
+.upgradeDesc {
+  font-size: 0.92rem;
+  color: #f4f4f4;
+  margin-bottom: 6px;
+}
+
+.priceBtnRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.upgradePrice {
+  font-size: 0.9rem;
+  color: #adadad;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.upgradeBtn {
+  padding: 5px 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  background: #e2b714;
+  color: #232946;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-left: 8px;
+}
+
+.upgradeBtn:disabled {
+  background: #bdbdbd;
+  color: #888;
+  cursor: not-allowed;
+} 

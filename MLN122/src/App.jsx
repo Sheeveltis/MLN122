@@ -2,20 +2,24 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-// import MainGamePage from './game/component/MainGamePage'
+import GamePage from './Game/GamePage'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import PresentationPage from './Presentation/PresentationPage'
-
 const publicRoutes = [
   {
     path: '/',
     element: <PresentationPage/>
   }, 
+  {
+    path: '/game',
+    element: <GamePage />,
+  },
 ]
 
 function NotFoundPage() {
   return <div>404 Not Found</div>
 }
+
 
 function App() {
   const [count, setCount] = useState(0)
