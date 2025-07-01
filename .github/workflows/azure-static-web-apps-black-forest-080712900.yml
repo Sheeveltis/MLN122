@@ -1,4 +1,4 @@
-name: Azure Static Web Apps CI/CD
+ name: Azure Static Web Apps CI/CD
 
 on:
   push:
@@ -61,6 +61,8 @@ jobs:
           app_location: "./MLN122"
           output_location: "./MLN122/dist"  # ✅ CHÍNH XÁC thư mục output của Vite
           github_id_token: ${{ steps.idtoken.outputs.result }}
+          skip_app_build: true         # ✅ Chặn Azure Oryx build lại
+          skip_api_build: true
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
