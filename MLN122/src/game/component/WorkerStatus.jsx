@@ -51,6 +51,28 @@ function WorkerStatus() {
             }}>
               <div style={{ fontWeight: 600, fontSize: 16, marginBottom: 4 }}>
                 Công nhân #{w.id} {icon && <span style={{fontSize: 20, marginLeft: 6}}>{icon}</span>}
+                {w.isStriking && (
+                  <span style={{
+                    background: '#e53935',
+                    color: '#fff',
+                    borderRadius: 6,
+                    padding: '2px 8px',
+                    marginLeft: 8,
+                    fontWeight: 700,
+                    fontSize: 14,
+                  }}>⛔ Đình công</span>
+                )}
+                {!w.isStriking && w.happiness < 30 && (
+                  <span style={{
+                    background: '#fbc02d',
+                    color: '#3A2C00',
+                    borderRadius: 6,
+                    padding: '2px 8px',
+                    marginLeft: 8,
+                    fontWeight: 700,
+                    fontSize: 14,
+                  }}>⚠️ Sắp đình công</span>
+                )}
               </div>
               <div style={{ fontSize: 14, marginBottom: 2 }}>
                 Mức sống thực tế: <b>{actualLiving.toFixed(2)}</b>

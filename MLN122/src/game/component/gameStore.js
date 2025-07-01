@@ -10,6 +10,8 @@ const createWorker = () => ({
   salary: 1,
   hours: 8,
   productivity: 1.0,
+  strikeLevel: 0,
+  isStriking: false,
 })
 
 const createMachine = () => ({
@@ -49,6 +51,48 @@ const useGameStore = create((set, get) => ({
   }),
 
   addGold: (amount) => set((state) => ({ gold: state.gold + amount })),
+
+  setWorkers: (newWorkers) => set((state) => ({ workers: newWorkers })),
+
+  // Recovery actions for workers
+  increaseSalary: (workerId) => set((state) => ({
+    workers: state.workers.map(w =>
+      w.id === workerId
+        ? {
+            ...w,
+            salary: w.salary + 1,
+            happiness: Math.min(100, w.happiness + 20),
+            strikeLevel: 0,
+            isStriking: false,
+          }
+        : w
+    ),
+  })),
+  reduceHours: (workerId) => set((state) => ({
+    workers: state.workers.map(w =>
+      w.id === workerId
+        ? {
+            ...w,
+            hours: Math.max(4, w.hours - 1),
+            happiness: Math.min(100, w.happiness + 15),
+            strikeLevel: 0,
+            isStriking: false,
+          }
+        : w
+    ),
+  })),
+  giveWelfare: (workerId) => set((state) => ({
+    workers: state.workers.map(w =>
+      w.id === workerId
+        ? {
+            ...w,
+            happiness: Math.min(100, w.happiness + 30),
+            strikeLevel: 0,
+            isStriking: false,
+          }
+        : w
+    ),
+  })),
 }))
 
 export default useGameStore 

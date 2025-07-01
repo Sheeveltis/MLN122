@@ -1,20 +1,27 @@
 import { useState, useEffect } from 'react'
 import useGameStore from './gameStore'
+import { useEventBus } from './useAutoGenerateGold'
 
 function PopupEvent() {
-  const boughtSuperCar = useGameStore((s) => s.boughtSuperCar)
   const [show, setShow] = useState(false)
-  const [chosen, setChosen] = useState(null)
+  const [message, setMessage] = useState('')
+  const eventBus = useEventBus()
 
   useEffect(() => {
-    if (boughtSuperCar) setShow(true)
-  }, [boughtSuperCar])
-
-  const handleChoose = (opt) => {
-    setChosen(opt)
-    // TODO: Gọi hàm xử lý hậu quả tương ứng trong store
-    setTimeout(() => setShow(false), 1500)
-  }
+    const unsub = eventBus.on((event, payload) => {
+      if (event === 'workerStrike') {
+        setMessage(`Công nhân #${payload.worker.id} đã đình công vì quá bất mãn. Bạn sẽ mất năng suất nếu không cải thiện điều kiện làm việc.`)
+        setShow(true)
+        setTimeout(() => setShow(false), 3500)
+      }
+      if (event === 'massStrike') {
+        setMessage('🏭 Nhà máy bị đình trệ vì công nhân đồng loạt đình công!')
+        setShow(true)
+        setTimeout(() => setShow(false), 5000)
+      }
+    })
+    return () => unsub()
+  }, [eventBus])
 
   if (!show) return null
 
@@ -40,58 +47,10 @@ function PopupEvent() {
         color: '#3A2C00',
         textAlign: 'center',
         position: 'relative',
+        fontWeight: 700,
+        fontSize: 18,
       }}>
-        <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 18 }}>
-          Công nhân A phải nghỉ việc vì không đủ tiền nuôi con đi học.<br/>
-          Trong khi đó bạn vừa mua thêm một chiếc siêu xe.
-        </div>
-        {!chosen && (
-          <>
-            <button
-              style={{
-                width: '100%',
-                padding: '10px 0',
-                borderRadius: 8,
-                border: '1px solid #eee',
-                background: '#D6F6C2',
-                color: '#2C401A',
-                fontWeight: 600,
-                fontSize: 16,
-                marginBottom: 12,
-                cursor: 'pointer',
-              }}
-              onClick={() => handleChoose('welfare')}
-            >
-              A. Cho thêm phúc lợi → giảm lợi nhuận
-            </button>
-            <button
-              style={{
-                width: '100%',
-                padding: '10px 0',
-                borderRadius: 8,
-                border: '1px solid #eee',
-                background: '#F6C244',
-                color: '#3A2C00',
-                fontWeight: 600,
-                fontSize: 16,
-                cursor: 'pointer',
-              }}
-              onClick={() => handleChoose('ignore')}
-            >
-              B. Phớt lờ → tăng nguy cơ đình công, giảm sức khỏe công nhân
-            </button>
-          </>
-        )}
-        {chosen === 'welfare' && (
-          <div style={{ color: '#388e3c', fontWeight: 600, marginTop: 16 }}>
-            Bạn đã chọn cho thêm phúc lợi. Lợi nhuận sẽ giảm.
-          </div>
-        )}
-        {chosen === 'ignore' && (
-          <div style={{ color: '#d32f2f', fontWeight: 600, marginTop: 16 }}>
-            Bạn đã phớt lờ. Nguy cơ đình công tăng, sức khỏe công nhân giảm.
-          </div>
-        )}
+        {message}
       </div>
     </div>
   )
