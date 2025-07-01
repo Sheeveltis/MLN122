@@ -7,7 +7,7 @@ function StatusBar({ label, value, colorClass }) {
     <div className={styles.statusBar}>
       <div className={styles.statusHeader}>
         <span>{label}</span>
-        <span>{value}%</span>
+        <span>{value}</span>
       </div>
       <div className={styles.progressBg}>
         <div

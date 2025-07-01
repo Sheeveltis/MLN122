@@ -1,12 +1,9 @@
 .quizContainer {
-  width: 66.6667vw;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #f8fafc;
-  padding: 48px 24px;
+  height: 100vh;
 }
 
 .question {
@@ -70,4 +67,24 @@
   color: #d32f2f;
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.nextBtn {
+  margin-top: 1.5rem;
+  padding: 10px 32px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  background: #4a90e2;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nextBtn:hover {
+  background: #357ab8;
 } 
