@@ -58,8 +58,8 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLACK_FOREST_080712900 }}
           action: "upload"
-          app_location: "./MLN122"
-          output_location: "./MLN122/dist"  # ✅ CHÍNH XÁC thư mục output của Vite
+          app_location: ./MLN122
+          output_location: dist
           github_id_token: ${{ steps.idtoken.outputs.result }}
           skip_api_build: true
 
