@@ -10,9 +10,10 @@ import Slide4 from './slides/Slide4'
 import Slide5 from './slides/Slide5'
 import Slide6 from './slides/Slide6'
 import Slide7 from './slides/Slide7'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 const slides = [
-  <Slide1 key={0} />, <Slide2 key={1} />, <Slide3 key={2} />, <Slide4 key={3} />, <Slide5 key={4} />, <Slide6 key={5} />, <Slide7 key={6} />
+   <Slide2 key={0} />, <Slide3 key={1} />, <Slide4 key={2} />, <Slide5 key={3} />,<Slide1 key={4} />, <Slide6 key={5} />, <Slide7 key={6} />
 ]
 
 function PresentationPage({ theme, toggleTheme }) {
@@ -42,13 +43,27 @@ function PresentationPage({ theme, toggleTheme }) {
 
   return (
     <div className={`presentation-container ${isDark ? 'dark' : 'light'}`}>
-      <ThemeToggleButton theme={theme} toggleTheme={toggleTheme} isDark={isDark} />
+      <ThemeToggleButton theme={theme} toggleTheme={toggleTheme} isDark={isDark} className="theme-toggle-btn" />
+      {/* Nút chuyển trang bên trái */}
+      {current > 0 && (
+        <button
+          className="slide-nav-btn left"
+          onClick={() => goToSlide(Math.max(0, current - 1))}
+        >
+          <ArrowLeft size={28} />
+        </button>
+      )}
+      {/* Nút chuyển trang bên phải */}
+      {current < slides.length - 1 && (
+        <button
+          className="slide-nav-btn right"
+          onClick={() => goToSlide(Math.min(slides.length - 1, current + 1))}
+        >
+          <ArrowRight size={28} />
+        </button>
+      )}
       <Slide
         fade={false}
-        onPrev={() => goToSlide(Math.max(0, current - 1))}
-        onNext={() => goToSlide(Math.min(slides.length - 1, current + 1))}
-        disablePrev={current === 0}
-        disableNext={current === slides.length - 1}
         anim={anim}
       >
         {slides[current]}
