@@ -9,7 +9,7 @@ import PresentationPage from './Presentation/PresentationPage'
 const publicRoutes = [
   {
     path: '/',
-    element: <div>Hello World</div>
+    element: <PresentationPage/>
   }, 
 ]
 
