@@ -14,8 +14,8 @@ export default function Slide6() {
         <li>Sự tăng trưởng không ổn định, tiềm ẩn khủng hoảng.</li>
       </ol>
       <div className="slide6-quote" style={{marginTop: 24}}>
-        “Accumulation of wealth at one pole is, therefore, at the same time accumulation of misery, agony of toil slavery, ignorance, brutality, mental degradation, at the opposite pole, i.e., on the side of the class that produces its own product in the form of capital.”<br/>
-        — Karl Marx, Tư bản, tập I.
+        “The ultimate reason for all real crises always remains the poverty and restricted consumption of the masses in contrast to the tendency of capitalist production to develop the productive forces as though only the absolute consuming power of society constituted their limit.”<br/>
+        — Karl Marx, Tư bản, tập III.
       </div>
     </div>
   )

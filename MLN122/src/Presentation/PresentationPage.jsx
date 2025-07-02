@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './PresentationPage.css'
 import Slide from './Slide'
 import ThemeToggleButton from './ThemeToggleButton'
+import GameButton from './GameButton'
 import SlideControls from './SlideControls'
 import Slide1 from './slides/Slide1'
 import Slide2 from './slides/Slide2'
@@ -43,6 +44,7 @@ function PresentationPage({ theme, toggleTheme }) {
 
   return (
     <div className={`presentation-container ${isDark ? 'dark' : 'light'}`}>
+      <GameButton isDark={isDark} />
       <ThemeToggleButton theme={theme} toggleTheme={toggleTheme} isDark={isDark} className="theme-toggle-btn" />
       {/* Nút chuyển trang bên trái */}
       {current > 0 && (

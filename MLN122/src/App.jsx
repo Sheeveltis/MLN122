@@ -7,10 +7,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import PresentationPage from './Presentation/PresentationPage'
 const publicRoutes = [
   {
-    path: '/',
-    element: <PresentationPage/>
-  }, 
-  {
     path: '/game',
     element: <GamePage />,
   },
@@ -33,6 +29,7 @@ function App() {
         {publicRoutes.map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
         ))}
+        <Route path="/" element={<PresentationPage theme={theme} toggleTheme={toggleTheme} />} />
         <Route path="/presentation" element={<PresentationPage theme={theme} toggleTheme={toggleTheme} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

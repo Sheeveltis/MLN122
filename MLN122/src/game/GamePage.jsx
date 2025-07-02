@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import QuizComponent from './QuizComponent';
 import HUDStatus from './HUDStatus';
 import RandomEventModal from './RandomEventModal';
+import PresentationButton from './PresentationButton';
 import styles from './GamePage.module.css';
 const quizData = [
     {
@@ -482,6 +483,7 @@ const GamePage = () => {
 
   return (
     <>
+      <PresentationButton />
       <StartModal visible={!gameStarted && !gameOver && !gameWon} onStart={() => setGameStarted(true)} />
       <PerfectVictoryModal visible={hasWonPerfect} onRestart={() => window.location.reload()} />
       <TroubledVictoryModal visible={hasWonTroubled} onRestart={() => window.location.reload()} />
